@@ -1,0 +1,20 @@
+.cardProduct{
+    width: 150px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    padding: 10px;
+    border: solid 2px #000;
+    border-radius: 10px;
+}
+
+.cardProduct h2, .cardProduct p{
+    text-align: center;
+}
+
+.cardProduct Button {
+    margin-top: 10px;
+}
