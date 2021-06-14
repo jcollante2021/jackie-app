@@ -1,0 +1,22 @@
+.navbar{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.listNav{
+    width: 60%;
+}
+
+.listNav ul {
+    padding: 0;
+    margin-bottom: 30px;
+    font-weight: 500;
+    color: white;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
