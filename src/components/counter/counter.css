@@ -1,0 +1,15 @@
+.divComprar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+input{
+    width: 40px;
+    text-align: center;
+    font-size: 15pt;
+}
+
+

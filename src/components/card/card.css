@@ -1,6 +1,6 @@
 .cardProduct{
     width: 150px;
-    height: 200px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,6 +15,5 @@
     text-align: center;
 }
 
-.cardProduct Button {
-    margin-top: 10px;
-}
+
+
