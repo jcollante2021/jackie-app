@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "Collar Cruz",
+        "description": "Collar de Plata diseño a mano, acabado fino",
+        "price": 500,
+        "stock": 10,
+        "pictureURL": "https://i.ibb.co/47Cw9gK/item1.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Collar de Anillo",
+        "description": "Collar de Oro, acabado fino",
+        "price": 800,
+        "stock": 13,
+        "pictureURL": "https://i.ibb.co/6PNXFjW/item2.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Collar Giroscopico",
+        "description": "Collar de Plata diseño a mano, acabado rustico",
+        "price": 1200,
+        "stock": 5,
+        "pictureURL": "https://i.ibb.co/c6jZz0M/item3.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Collar de Luna",
+        "description": "Collar de Oro, acabado fino",
+        "price": 800,
+        "stock": 15,
+        "pictureURL": "https://i.ibb.co/YhMyM3R/item4.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Collar Esfera Metalica",
+        "description": "Collar de Plata con diseño a mano, acabado fino",
+        "price": 400,
+        "stock": 6,
+        "pictureURL": "https://i.ibb.co/vxf10fG/item5.jpg"
+    }
+]
