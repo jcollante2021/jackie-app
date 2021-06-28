@@ -1,8 +1,8 @@
 import React from 'react'
-import Card from '../card/Card'
+import ItemDetailComponent from '../../components/itemDetailComponent/itemDetailComponent'
 import { useEffect, useState } from 'react'
 
-export default function ListContainer() {
+export default function ItemDetailContainer() {
 
     const [productos, setProductos] = useState([])
 
@@ -15,7 +15,7 @@ export default function ListContainer() {
     useEffect( () => {
         const getData = async () => {
             let data = await fetchData()
-            setProductos(data)
+            setProductos(data[1])
         }
 
         getData();
@@ -24,10 +24,7 @@ export default function ListContainer() {
 
     return (
         <>
-            {productos.map(productos => {
-                return <Card productos={productos} key={productos.id}/>
-            })
-            }
+            <ItemDetailComponent productos={productos} key={productos.id}/>
         </>
     )
 }

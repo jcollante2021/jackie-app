@@ -1,0 +1,30 @@
+.detailComponent{
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+.imgDetail{
+    border: 4px solid #000;
+    border-radius: 20px;
+}
+
+.imgDetail img{
+    margin: 15px;
+    border-radius: 20px;
+}
+
+.detail{
+    width: 350px;
+}
+
+.detail h1{
+    font-size: 30pt;
+}
+
+.detail h3{
+    font-size: 25pt;
+    text-align: right;
+}
