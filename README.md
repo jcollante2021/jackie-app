@@ -1,4 +1,5 @@
-#Jackie Joyas E-commerce Project for ReactJS
+
+# Jackie Joyas E-commerce Project for ReactJS
 
 ## Getting Started with Create React App
 
@@ -6,7 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Sobre el Proyecto
 
-    Este proyecto es enteramente academico, con el fin de poner a prueba todo lo aprendido en las clases del Curso de ReactJS brindado por [CODERHOUSE](https://www.coderhouse.com/online/reactjs)
+Este proyecto es enteramente academico, con el fin de poner a prueba todo lo aprendido en las clases del Curso de ReactJS brindado po [CODER HOUSE](https://www.coderhouse.com/online/reactjs).
+
 
 ## Available Scripts
 
