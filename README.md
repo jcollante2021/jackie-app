@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+#Jackie Joyas E-commerce Project for ReactJS
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Sobre el Proyecto
+
+    Este proyecto es enteramente academico, con el fin de poner a prueba todo lo aprendido en las clases del Curso de ReactJS brindado por [CODERHOUSE](https://www.coderhouse.com/online/reactjs)
 
 ## Available Scripts
 

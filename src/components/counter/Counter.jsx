@@ -24,9 +24,6 @@ export default function Counter({stock}) {
             setCounter(valor)
         }
     }
-    const comprar = () => {
-        alert("Felicidades elegiste " + counter + " productos")
-    }
 
     return (
         <div className="divComprar">
@@ -35,8 +32,6 @@ export default function Counter({stock}) {
                 <input type="text" value={counter} onChange={cambioManual}/>
                 <Button onClick={incrementar}>+</Button>
             </ButtonGroup>
-            <br/>
-            <Button variant="contained" color="secondary" onClick={comprar}>Comprar</Button>
         </div>
     )
 }

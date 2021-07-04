@@ -1,47 +1,82 @@
 [
     {
         "id": 1,
-        "title": "Collar Cruz",
+        "title": "Cadenita Cruz",
         "description": "Collar de Plata diseño a mano, acabado fino",
         "price": 500,
         "stock": 10,
-        "pictureURL": "https://i.ibb.co/47Cw9gK/item1.jpg",
-        "pictureFull": "https://i.ibb.co/ZLwMw7P/item1full.jpg"
+        "pictureURL" : "/img/item1.jpeg",
+        "pictureFull": "/img/item1full.jpeg",
+        "categoria": 2
     },
     {
         "id": 2,
-        "title": "Collar de Anillo",
-        "description": "Collar de Oro, acabado fino",
+        "title": "Cadenita de Anillo",
+        "description": "Collar de Oro diseño a mano, acabado fino",
         "price": 800,
-        "stock": 13,
-        "pictureURL": "https://i.ibb.co/6PNXFjW/item2.jpg",
-        "pictureFull": "https://i.ibb.co/k1367y4/item2full.jpg"
+        "stock": 0,
+        "pictureURL" : "/img/item2.jpeg",
+        "pictureFull": "/img/item2full.jpeg",
+        "categoria": 1
     },
     {
         "id": 3,
-        "title": "Collar Giroscopico",
+        "title": "Collar Diamantino",
         "description": "Collar de Plata diseño a mano, acabado rustico",
         "price": 1200,
         "stock": 5,
-        "pictureURL": "https://i.ibb.co/c6jZz0M/item3.jpg",
-        "pictureFull": "https://i.ibb.co/cDqmntz/item3full.jpg"
+        "pictureURL" : "/img/item3.jpeg",
+        "pictureFull": "/img/item3full.jpeg",
+        "categoria": 2
     },
     {
         "id": 4,
         "title": "Collar de Luna",
-        "description": "Collar de Oro, acabado fino",
+        "description": "Collar de Oro diseño a mano, acabado fino",
         "price": 800,
-        "stock": 15,
-        "pictureURL": "https://i.ibb.co/YhMyM3R/item4.jpg",
-        "pictureFull": "https://i.ibb.co/sQL9kkH/item4full.jpg"
+        "stock": 2,
+        "pictureURL" : "/img/item4.jpeg",
+        "pictureFull": "/img/item4full.jpeg",
+        "categoria": 1
     },
     {
         "id": 5,
-        "title": "Collar Esfera Metalica",
+        "title": "Cadenita Esfera",
         "description": "Collar de Plata con diseño a mano, acabado fino",
         "price": 400,
         "stock": 6,
-        "pictureURL": "https://i.ibb.co/vxf10fG/item5.jpg",
-        "pictureFull": "https://i.ibb.co/p2Qs2tz/item5full.jpg"
+        "pictureURL" : "/img/item5.jpeg",
+        "pictureFull": "/img/item5full.jpeg",
+        "categoria": 2
+    },
+    {
+        "id": 6,
+        "title": "Cadenita Secret",
+        "description": "Collar de Plata con diseño a mano, acabado fino",
+        "price": 1450,
+        "stock": 0,
+        "pictureURL" : "/img/item6.jpeg",
+        "pictureFull": "/img/item6full.jpeg",
+        "categoria": 2
+    },
+    {
+        "id": 7,
+        "title": "Collar Candado",
+        "description": "Collar de Oro diseño a mano, acabado fino",
+        "price": 2300,
+        "stock": 6,
+        "pictureURL" : "/img/item7.jpeg",
+        "pictureFull": "/img/item7full.jpeg",
+        "categoria": 1
+    },
+    {
+        "id": 8,
+        "title": "Anillo Karol",
+        "description": "Anillo de Oro diseño a mano, acabado fino",
+        "price": 1850,
+        "stock": 2,
+        "pictureURL" : "/img/item8.jpeg",
+        "pictureFull": "/img/item8full.jpeg",
+        "categoria": 1
     }
 ]
