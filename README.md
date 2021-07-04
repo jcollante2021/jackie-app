@@ -7,7 +7,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Sobre el Proyecto
 
-Este proyecto es enteramente academico, con el fin de poner a prueba todo lo aprendido en las clases del Curso de ReactJS brindado po [CODER HOUSE](https://www.coderhouse.com/online/reactjs).
+Este proyecto es enteramente academico, con el fin de poner a prueba todo lo aprendido en las clases del Curso de ReactJS brindado por [CODER HOUSE](https://www.coderhouse.com/online/reactjs).
+Para la realizacion del codigo se utilizaron las siguientes dependencias:
+    ►Material UI para la utilización de componentes pre-armados, con estilos pre-definidos, los cuales fueron adaptados para su mejor uso. (https://material-ui.com/es/)
+    ►Material Icon para la utilizacion de distintos Iconos en la Web (https://material-ui.com/es/components/material-icons/)
+    ►React Router DOM implementando el ruteo para otorgar navegabilidad al proyecto (https://reactrouter.com/web/guides/quick-start)
 
 
 ## Available Scripts
