@@ -1,6 +1,5 @@
 import React from 'react'
 import './card.css'
-import Counter from '../counter/Counter'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -41,7 +40,7 @@ export default function ItemCard({productos}) {
                     <Typography className="textPrice" variant="h5"> 
                         ${productos.price}
                     </Typography>
-                    <Counter stock={productos.stock}/>
+                    <br/>
                     <Link to={`/productos/${productos.id}`}>
                         <Button variant="contained" color="secondary">
                         VER ARTICULO

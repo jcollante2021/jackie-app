@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from '@material-ui/core'
 import './counter.css'
 import { useState } from 'react'
 
-export default function Counter({stock}) {
+export default function Counter({stock , onAdd}) {
     const [counter, setCounter] = useState(1)
 
     const incrementar = () => {
@@ -32,6 +32,11 @@ export default function Counter({stock}) {
                 <input type="text" value={counter} onChange={cambioManual}/>
                 <Button onClick={incrementar}>+</Button>
             </ButtonGroup>
+            { stock === 0 ? 
+                    <Button variant="contained" color="secondary" className="btnDetail" disabled>SIN STOCK</Button>
+                    :
+                    <Button variant="contained" color="secondary" className="btnDetail" onClick={onAdd}>AÑADIR AL CARRITO</Button>
+            }
         </div>
     )
 }

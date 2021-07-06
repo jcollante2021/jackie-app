@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './itemDetailComponent.css'
 import Counter from '../counter/Counter'
 import { Button } from '@material-ui/core'
 
 export default function ItemDetailComponent({itemSelect}) {
+
+    const [terminarCompra, setTerminarCompra] = useState(false)
+
+    function onAdd() {
+        setTerminarCompra(true);
+    }
+
     return (
         <div className="detailComponent">
             <div className="imgDetail">
@@ -14,12 +21,15 @@ export default function ItemDetailComponent({itemSelect}) {
                 <p>{itemSelect.description}</p>
                 <p>Stock: {itemSelect.stock}</p>
                 <h3>${itemSelect.price}</h3>
-                <Counter stock={itemSelect.stock}/>
-                { itemSelect.stock === 0 ? 
-                    <Button variant="contained" color="secondary" className="btnDetail" disabled>SIN STOCK</Button>
+                { terminarCompra ? 
+                <div className="btnTerminarCompra">
+                    <Button variant="contained" color="primary" className="btnTerminarCompra">TERMINAR COMPRA</Button>
+                </div>
                     :
-                    <Button variant="contained" color="secondary" className="btnDetail">AÑADIR AL CARRITO</Button>
+                    <Counter stock={itemSelect.stock} onAdd={onAdd}/>
+
                 }
+                
             </div>            
         </div>
     )
