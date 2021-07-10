@@ -35,7 +35,7 @@ export default function Counter({stock , onAdd}) {
             { stock === 0 ? 
                     <Button variant="contained" color="secondary" className="btnDetail" disabled>SIN STOCK</Button>
                     :
-                    <Button variant="contained" color="secondary" className="btnDetail" onClick={onAdd}>AÑADIR AL CARRITO</Button>
+                    <Button variant="contained" color="secondary" className="btnDetail" onClick={() =>{onAdd(counter)}}>AÑADIR AL CARRITO</Button>
             }
         </div>
     )

@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import './itemDetailComponent.css'
 import Counter from '../counter/Counter'
 import { Button } from '@material-ui/core'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 export default function ItemDetailComponent({itemSelect}) {
-
+    const {addItemToCart} = useContext(CartContext)
     const [terminarCompra, setTerminarCompra] = useState(false)
 
-    function onAdd() {
+    function onAdd(counter) {
+        addItemToCart(itemSelect, counter)
         setTerminarCompra(true);
     }
 
