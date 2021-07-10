@@ -1,0 +1,36 @@
+.cartContainer{
+    margin: 30px 20% 50px 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartContainer h3{
+    margin-top: 30px;
+    border-top: 1px solid #000;
+    width: 100%;
+}
+.cartContainer h1{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.noHayProductos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.noHayProductos Button{
+    margin-top: 20px;
+}
+
+.ivaPrecio{
+    font-size: 8pt;
+}
+
+.textoPrecio{
+    text-align: right;
+}

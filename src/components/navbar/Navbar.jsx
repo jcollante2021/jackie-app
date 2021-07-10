@@ -20,7 +20,7 @@ export default function Navbar() {
                     <li><Link to={`/productos`}>Productos</Link></li>
                     <li><Link to={`/productos/categoria/1`}>Oro</Link></li>
                     <li><Link to={`/productos/categoria/2`}>Plata</Link></li>
-                    <li>
+                    <Link to={`/cart`}><li>
                         {cartQuantity === 0 ? 
                         <ShoppingCartIcon/>
                         :
@@ -28,7 +28,7 @@ export default function Navbar() {
                             <ShoppingCartIcon />
                         </Badge>
                         }
-                    </li>
+                    </li></Link>
                 </ul>
             </div>
         </div>

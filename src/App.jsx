@@ -5,6 +5,7 @@ import ListContainer from "./container/ListContainer/ListContainer";
 import ItemDetailContainer from "./container/itemDetailContainer/ItemDetailContainer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import CartContextComponent from "./context/CartContext";
+import CartContainer from "./container/CartContainer/CartContainer";
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path="/productos/categoria/:cat">
               <ListContainer/>
+            </Route>
+            <Route path="/cart">
+              <CartContainer/>
             </Route>
           </Switch>
         </BrowserRouter>

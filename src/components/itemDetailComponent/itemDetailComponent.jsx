@@ -1,17 +1,28 @@
 import React, { useState } from 'react'
 import './itemDetailComponent.css'
 import Counter from '../counter/Counter'
-import { Button } from '@material-ui/core'
+import { Button, Snackbar } from '@material-ui/core'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
+import { Alert } from '@material-ui/lab'
+import { Link } from 'react-router-dom'
 
 export default function ItemDetailComponent({itemSelect}) {
     const {addItemToCart} = useContext(CartContext)
     const [terminarCompra, setTerminarCompra] = useState(false)
+    const [open, setOpen] = useState(false)
+    
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
 
     function onAdd(counter) {
         addItemToCart(itemSelect, counter)
         setTerminarCompra(true);
+        setOpen(true);
     }
 
     return (
@@ -25,15 +36,22 @@ export default function ItemDetailComponent({itemSelect}) {
                 <p>Stock: {itemSelect.stock}</p>
                 <h3>${itemSelect.price}</h3>
                 { terminarCompra ? 
-                <div className="btnTerminarCompra">
-                    <Button variant="contained" color="primary" className="btnTerminarCompra">TERMINAR COMPRA</Button>
+                <div>
+                    <div className="btnTerminarCompra">
+                    <Link to={`/cart`}><Button variant="contained" color="primary" className="btnTerminarCompra">IR AL CARRITO</Button></Link>
+                    </div>
+                    <Link to={`/productos`}><Button variant="contained" color="primary">VER MÁS PRODUCTOS</Button></Link>
                 </div>
-                    :
-                    <Counter stock={itemSelect.stock} onAdd={onAdd}/>
+                :
+                <Counter stock={itemSelect.stock} onAdd={onAdd}/>
 
-                }
-                
-            </div>            
+                }                
+            </div>
+            <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success">
+                    Se agregó el Producto correctamente
+                </Alert>
+            </Snackbar>            
         </div>
     )
 }
