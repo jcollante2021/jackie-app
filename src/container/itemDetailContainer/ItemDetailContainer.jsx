@@ -4,30 +4,27 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import './itemDetailContainer.css'
+import { getFirestore } from '../../Firebase/client';
 
 export default function ItemDetailContainer() {
-    const { product_id } = useParams(); 
-    const [listProductos, setListProductos] = useState([])
+    const { product_id } = useParams();
     const [itemSelect, setItemSelect] = useState ({})
     const [progress, setProgress] = useState(false)
 
     useEffect(() => {
         const getItems = async () => {
             setProgress(false)
-            let aux;
-            if (listProductos.length === 0) {
-                fetch('../json/products.json')
-                .then(res => res.json())
-                .then(res => setListProductos(res))
-                }
-            aux = listProductos.find((p) => p.id === parseInt(product_id));
+            const DB = getFirestore();
+            const COLLECTION = DB.collection("productos")
+            const RESPONSE = await COLLECTION.doc(`${product_id}`).get()
+            let prods = RESPONSE.data()
             setTimeout( () => {
-                setItemSelect(aux);
+                setItemSelect(prods);
                 setProgress(true)
             }, 800)
         };
     getItems();
-    }, [product_id, listProductos]);
+    }, [product_id]);
 
     return (
         <>

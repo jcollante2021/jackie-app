@@ -3,14 +3,30 @@ import ItemCard from '../../components/itemCard/ItemCard'
 import { useEffect, useState } from 'react'
 import './listContainer.css'
 import { useParams } from 'react-router-dom'
+import { getFirestore } from '../../Firebase/client'
 
 export default function ListContainer() {
     const { cat } = useParams()
     const [productos, setProductos] = useState([])
     
     useEffect( () => {
-        
-        fetch('/json/products.json')
+        async function getDBFirestore(){
+            const DB = getFirestore();
+            const COLLECTION = DB.collection("productos")
+            const RESPONSE = await COLLECTION.get()
+            let prods = RESPONSE.docs.map(element => {
+                return { id: element.id, ...element.data()}
+            });
+            if(cat){
+                let aux
+                aux = prods.filter( e => e.categoria === parseInt(cat))
+                setProductos(aux)
+            }else{
+                setProductos(prods)
+            }
+        }
+        getDBFirestore();
+        /* fetch('/json/products.json')
         .then(res => res.json())
         .then(res => {
             if(cat){
@@ -20,8 +36,7 @@ export default function ListContainer() {
             }else{
                 setProductos(res)
             }
-        })
-
+        }) */
     }, [cat])
 
     return (
