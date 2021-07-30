@@ -1,23 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ItemDetailComponent from '../../components/itemDetailComponent/itemDetailComponent'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import './itemDetailContainer.css'
-import { getFirestore } from '../../Firebase/client';
+import { CartContext } from '../../context/CartContext';
 
 export default function ItemDetailContainer() {
     const { product_id } = useParams();
+    const { dataFirestore } = useContext(CartContext)
     const [itemSelect, setItemSelect] = useState ({})
     const [progress, setProgress] = useState(false)
 
     useEffect(() => {
         const getItems = async () => {
-            setProgress(false)
-            const DB = getFirestore();
-            const COLLECTION = DB.collection("productos")
-            const RESPONSE = await COLLECTION.doc(`${product_id}`).get()
-            let prods = RESPONSE.data()
+            let prods = dataFirestore.find((p) => p.id === product_id);
             setTimeout( () => {
                 setItemSelect(prods);
                 setProgress(true)

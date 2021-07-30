@@ -50,7 +50,7 @@ export default function CartContextComponent({children}) {
     }
 
     useEffect( () => {
-        async function getDBFirestore(){
+        const getDBFirestore = async () => {
             const DB = getFirestore();
             const COLLECTION = DB.collection("productos")
             const RESPONSE = await COLLECTION.get()
