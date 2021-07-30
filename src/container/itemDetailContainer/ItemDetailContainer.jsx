@@ -21,7 +21,7 @@ export default function ItemDetailContainer() {
             }, 800)
         };
     getItems();
-    }, [product_id]);
+    }, [product_id, dataFirestore]);
 
     return (
         <>

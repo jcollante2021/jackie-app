@@ -22,7 +22,7 @@ export default function ListContainer() {
             }
         }
         getDBFirestore();
-    }, [cat])
+    }, [cat, dataFirestore])
 
     return (
         <div className="ListProduct">
