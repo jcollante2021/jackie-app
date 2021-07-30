@@ -1,5 +1,6 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 import { useState } from 'react'
+import { getFirestore } from '../Firebase/client'
 
 export const CartContext = createContext()
 
@@ -8,6 +9,7 @@ export default function CartContextComponent({children}) {
     const [cart, setCart] = useState([])
     const [cartQuantity, setCartQuantity] = useState(0)
     const [precioTotal, setPrecioTotal] = useState(0)
+    const [dataFirestore, getDataFirestore] = useState([])
 
     function updateCart(cart){
         let total = 0
@@ -47,8 +49,21 @@ export default function CartContextComponent({children}) {
         updateCart(cart)
     }
 
+    useEffect( () => {
+        async function getDBFirestore(){
+            const DB = getFirestore();
+            const COLLECTION = DB.collection("productos")
+            const RESPONSE = await COLLECTION.get()
+            let prods = RESPONSE.docs.map(element => {
+                return { id: element.id, ...element.data()}
+            });
+            getDataFirestore(prods)
+        }
+        getDBFirestore();
+    }, [])
+
     return (
-        <CartContext.Provider value={{cart, cartQuantity, precioTotal, addItemToCart, cleanCart, removeItemToCart}}>
+        <CartContext.Provider value={{cart, cartQuantity, precioTotal, addItemToCart, cleanCart, removeItemToCart, dataFirestore}}>
             {children}
         </CartContext.Provider>
     )

@@ -3,40 +3,25 @@ import ItemCard from '../../components/itemCard/ItemCard'
 import { useEffect, useState } from 'react'
 import './listContainer.css'
 import { useParams } from 'react-router-dom'
-import { getFirestore } from '../../Firebase/client'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 export default function ListContainer() {
     const { cat } = useParams()
+    const { dataFirestore } = useContext(CartContext)
     const [productos, setProductos] = useState([])
     
     useEffect( () => {
-        async function getDBFirestore(){
-            const DB = getFirestore();
-            const COLLECTION = DB.collection("productos")
-            const RESPONSE = await COLLECTION.get()
-            let prods = RESPONSE.docs.map(element => {
-                return { id: element.id, ...element.data()}
-            });
+        function getDBFirestore(){
             if(cat){
                 let aux
-                aux = prods.filter( e => e.categoria === parseInt(cat))
+                aux = dataFirestore.filter( e => e.categoria === parseInt(cat))
                 setProductos(aux)
             }else{
-                setProductos(prods)
+                setProductos(dataFirestore)
             }
         }
         getDBFirestore();
-        /* fetch('/json/products.json')
-        .then(res => res.json())
-        .then(res => {
-            if(cat){
-                let aux
-                aux = res.filter( e => e.categoria === parseInt(cat))
-                setProductos(aux)
-            }else{
-                setProductos(res)
-            }
-        }) */
     }, [cat])
 
     return (
