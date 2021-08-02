@@ -46,9 +46,9 @@ export default function CartContainer() {
             <h3 className="textoPrecio">Subtotal: ${precioTotal}</h3>
             <h1 className="textoPrecio"> <span className="ivaPrecio">(+IVA21%)</span> Precio Total: ${precioTotal + (precioTotal * 0.21)}</h1>
             {cartQuantity > 0 ?
-                <Link to={`/cart/checkout`}><Button variant="contained" color="primary" style={{backgroundColor: "green"}}>FINALIZAR COMPRA</Button></Link>
+                <Link to={`/cart/checkout`}><Button variant="contained" color="primary" style={{backgroundColor: "green"}}>CONTINUAR COMPRA</Button></Link>
                 :
-                <Button variant="contained" color="primary" disabled>FINALIZAR COMPRA</Button>
+                <Button variant="contained" color="primary" disabled>CONTINUAR COMPRA</Button>
             }
             <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">

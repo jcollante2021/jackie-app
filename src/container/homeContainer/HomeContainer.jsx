@@ -12,7 +12,6 @@ export default function Home() {
                 <img src="./img/gif3.gif" alt="" />
             </div>
             <ListContainer/>
-            <img className="footer" src="./img/footer.gif" alt="" />
         </div>
     )
 }
