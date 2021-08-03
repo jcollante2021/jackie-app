@@ -1,6 +1,6 @@
-import { Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from '@material-ui/core';
 import React, { useContext } from 'react'
 import { useState } from 'react'
+import CheckOut from '../../components/checkOut/CheckOut';
 import { CartContext } from '../../context/CartContext';
 import { getFirestore } from '../../Firebase/client';
 
@@ -15,6 +15,36 @@ export default function CheckOutContainer() {
     const [localidad, setLocalidad] = useState()
     const [idDePedido, setIdDePedido] = useState()
 
+    async function generarLinkDePago() {
+        const productsToMP = cart.map((element) => {
+            let nuevoElemento = {
+                title: element.producto.title,
+                description: element.producto.description,
+                picture_url: element.producto.pictureURL,
+                category_id: element.producto.categoria,
+                quantity: Number(element.cantidad),
+                currency_id: "ARS",
+                unit_price: Number(element.producto.price),
+            };
+            return nuevoElemento;
+        });
+        const response = await fetch(
+            "https://api.mercadopago.com/checkout/preferences",
+            {
+                method: "POST",
+                headers: {
+                Authorization:
+                    "Bearer TEST-4524169472049363-080220-ce197191c193c0b87a4dee2a2587ce8c-19147385",
+                },
+                body: JSON.stringify({
+                items: productsToMP,
+                }),
+            }
+        );
+        const data = await response.json();
+        window.open(data.init_point, "_blank");
+    }
+
 
     function crearNuevaOrden(){
         const nuevaOrden = {buyer: {nombre, mail, telefono, direccion, localidad}, item: cart, price: precioTotal };
@@ -25,29 +55,15 @@ export default function CheckOutContainer() {
     
 
     return (
-        <div style={{marginLeft: '33%', marginRight: '33%',}}>
+        <div>
             {idDePedido ? 
-                <h1>¡¡¡Felicitaciones!!! <br /> el pedido se realizo con Éxito <br /> <br />
-                Tu N° de Orden es: <br /> {idDePedido}</h1>
+                <div>
+                    <h1 style={{marginBottom: 50, textAlign:"center"}}>¡¡¡Felicitaciones {nombre}!!! <br /> el pedido se realizo con Éxito <br /> <br />
+                    Tu N° de Orden es: <br /> {idDePedido}</h1>
+                    <p style={{marginBottom: 150, textAlign:"center"}}>Enviamos un Mail a <b>{mail}</b> con toda la información necesaria</p>
+                </div>
                 :    
-                <form noValidate autoComplete="off">
-                    <TextField id="outlined-basic" label="Nombre y apellido" variant="outlined" style={{margin: 15 , width: 500}} onInput={(e) => {setNombre(e.target.value)}}/><br />
-                    <TextField type="email" id="outlined-full-width" label="E-Mail" variant="outlined" style={{margin: 15, width: 500}} onInput={(e) => {setMail(e.target.value)}}/> <br />
-                    <TextField type="text" id="outlined-basic" label="Teléfono" variant="outlined" style={{margin: 15}} onInput={(e) => {setTelefono(e.target.value)}}/>
-                    <TextField id="outlined-basic" label="Dirección" variant="outlined" style={{margin: 15 , width: 500}} onInput={(e) => {setDireccion(e.target.value)}}/><br />
-                    <TextField id="outlined-basic" label="Localidad" variant="outlined" style={{margin: 15 , width: 500}} onInput={(e) => {setLocalidad(e.target.value)}}/><br />
-                    <FormControl component="fieldset" style={{margin: 15 , width: 500}}>
-                        <FormLabel component="legend">Tipo de Envío</FormLabel>
-                        <RadioGroup aria-label="gender" name="gender1">
-                            <FormControlLabel value="female" control={<Radio/>} label="Retiro por Sucursal ($0)" />
-                            <FormControlLabel value="male" control={<Radio />} label="Envío OCA ($280)" />
-                            <FormControlLabel value="other" control={<Radio />} label="Envío Express ($530)" />
-                        </RadioGroup>
-                    </FormControl>
-                    <Button variant="contained" color="secondary" onClick={crearNuevaOrden} style={{marginBottom: 50}}>
-                        FINALIZAR COMPRA
-                    </Button>
-                </form>
+                <CheckOut mercadoPago={generarLinkDePago} funcion={crearNuevaOrden} nombre={setNombre} mail={setMail} telefono={setTelefono} direccion={setDireccion} localidad={setLocalidad}/>
             }
         </div>
     )

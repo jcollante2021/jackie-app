@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from '@material-ui/core';
+import './checkOut.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,57 +32,56 @@ function getSteps() {
     return ['Datos Personales', 'Información de Envío', 'Forma de Pago'];
 }
 
-
-
-function getStepContent(step) {
-
-    switch (step) {
-        case 0:
-        return  <form noValidate autoComplete="off">
-                    <TextField id="outlined-basic" label="Nombre y apellido" variant="outlined" style={{margin: 15 , width: 500}}/><br />
-                    <TextField type="email" id="outlined-full-width" label="E-Mail" variant="outlined" style={{margin: 15, width: 500}}/> <br />
-                    <TextField type="text" id="outlined-basic" label="Teléfono" variant="outlined" style={{margin: 15}}/>
-                </form>;
-        case 1:
-        return  <form noValidate autoComplete="off">
-                    <TextField id="outlined-basic" label="Dirección" variant="outlined" style={{margin: 15 , width: 500}} /><br />
-                    <TextField id="outlined-basic" label="Localidad" variant="outlined" style={{margin: 15 , width: 500}} /><br />
-                    <FormControl component="fieldset" style={{margin: 15 , width: 500}}>
-                        <FormLabel component="legend">Tipo de Envío</FormLabel>
-                        <RadioGroup aria-label="gender" name="gender1">
-                            <FormControlLabel value="female" control={<Radio />} label="Retiro por Sucursal ($0)" />
-                            <FormControlLabel value="male" control={<Radio />} label="Envío OCA ($280)" />
-                            <FormControlLabel value="other" control={<Radio />} label="Envío Express ($530)" />
-                        </RadioGroup>
-                    </FormControl>
-                </form>;
-        case 2:
-        return `Por el momento no se encuentra habilitado la opción de Pago Online, se abonará en Efectivo a contrareembolso cuando llegue su pedido`;
-        default:
-        return 'Unknown step';
-    }
-}
-
-export default function CheckOut({state}) {
+export default function CheckOut({mercadoPago, funcion, nombre, mail, telefono, direccion, localidad}) {
     
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
+    
+    
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
-
+    
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
-
+    function getStepContent(step) {
+    
+        switch (step) {
+            case 0:
+            return  <form noValidate autoComplete="off">
+                        <TextField id="outlined-basic" label="Nombre y apellido" variant="outlined" style={{margin: 15 , width: 500}} onInput={(e) => {nombre (e.target.value)}}/><br />
+                        <TextField type="email" id="outlined-full-width" label="E-Mail" variant="outlined" style={{margin: 15, width: 500}} onInput={(e) => {mail(e.target.value)}}/> <br />
+                        <TextField type="text" id="outlined-basic" label="Teléfono" variant="outlined" style={{margin: 15}} onInput={(e) => {telefono(e.target.value)}}/>
+                    </form>;
+            case 1:
+            return  <form noValidate autoComplete="off">
+                        <TextField id="outlined-basic" label="Dirección" variant="outlined" style={{margin: 15 , width: 500}} onInput={(e) => {direccion(e.target.value)}}/><br />
+                        <TextField id="outlined-basic" label="Localidad" variant="outlined" style={{margin: 15 , width: 500}} onInput={(e) => {localidad(e.target.value)}}/><br />
+                        <FormControl component="fieldset" style={{margin: 15 , width: 500}}>
+                            <FormLabel component="legend">Tipo de Envío</FormLabel>
+                            <RadioGroup aria-label="gender" name="gender1">
+                                <FormControlLabel value="female" control={<Radio />} label="Retiro por Sucursal ($0)" />
+                                <FormControlLabel value="male" control={<Radio />} label="Envío OCA ($280)" />
+                                <FormControlLabel value="other" control={<Radio />} label="Envío Express ($530)" />
+                            </RadioGroup>
+                        </FormControl>
+                    </form>;
+            case 2:
+            return  <div className="mercadoPago">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/jackie-app-74305.appspot.com/o/mp.png?alt=media&token=c76cc288-bafb-4e6e-9f60-196dd447bbba" alt="Mercado Pago" />
+                        <Button variant="contained" color="primary" onClick={mercadoPago}>IR A MERCADO PAGO</Button>
+                    </div>;
+            default:
+            return 'Unknown step';
+        }
+    }
+    
     return (
-        <div className={classes.root}>
+        <div className={classes.root} style={{marginBottom: 150}}>
         <Stepper activeStep={activeStep} orientation="vertical">
             {steps.map((label, index) => (
             <Step key={label}>
@@ -114,7 +114,7 @@ export default function CheckOut({state}) {
         {activeStep === steps.length && (
             <Paper square elevation={0} className={classes.resetContainer}>
             <Typography style={{textAlign: "center"}}>Felicidades todos los campos estan Validados</Typography>
-            <Button onClick={handleReset} variant="contained" color="secondary">
+            <Button onClick={funcion} variant="contained" color="secondary">
                 FINALIZAR COMPRA
             </Button>
             </Paper>

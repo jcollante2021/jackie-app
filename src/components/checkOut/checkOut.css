@@ -1,0 +1,16 @@
+.mercadoPago{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mercadoPago Button{
+    margin: 10px 0 10px 0;
+    width: 220px;
+    background-color: #009ee3;
+}
+
+.mercadoPago Button:hover{
+    background-color: #018fcc;
+}
