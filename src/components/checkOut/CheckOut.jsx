@@ -32,7 +32,7 @@ function getSteps() {
     return ['Datos Personales', 'Información de Envío', 'Forma de Pago'];
 }
 
-export default function CheckOut({mercadoPago, funcion, nombre, mail, telefono, direccion, localidad}) {
+export default function CheckOut({mercadoPago, statusMercadoPago, funcion, nombre, mail, telefono, direccion, localidad}) {
     
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -73,7 +73,11 @@ export default function CheckOut({mercadoPago, funcion, nombre, mail, telefono, 
             case 2:
             return  <div className="mercadoPago">
                         <img src="https://firebasestorage.googleapis.com/v0/b/jackie-app-74305.appspot.com/o/mp.png?alt=media&token=c76cc288-bafb-4e6e-9f60-196dd447bbba" alt="Mercado Pago" />
-                        <Button variant="contained" color="primary" onClick={mercadoPago}>IR A MERCADO PAGO</Button>
+                        {statusMercadoPago ? 
+                            <Button variant="contained" color="primary" style={{backgroundColor: "green"}}>PAGO APROBADO</Button>
+                            :
+                            <Button variant="contained" color="primary" onClick={mercadoPago}>IR A MERCADO PAGO</Button>
+                        }
                     </div>;
             default:
             return 'Unknown step';

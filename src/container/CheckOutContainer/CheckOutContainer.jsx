@@ -14,6 +14,7 @@ export default function CheckOutContainer() {
     const [direccion, setDireccion] = useState()
     const [localidad, setLocalidad] = useState()
     const [idDePedido, setIdDePedido] = useState()
+    const [statusMP, setStatusMP] = useState(false)
 
     async function generarLinkDePago() {
         const productsToMP = cart.map((element) => {
@@ -42,7 +43,8 @@ export default function CheckOutContainer() {
             }
         );
         const data = await response.json();
-        window.open(data.init_point, "_blank");
+        window.open(data.init_point);
+        setStatusMP(true);
     }
 
 
@@ -63,7 +65,7 @@ export default function CheckOutContainer() {
                     <p style={{marginBottom: 150, textAlign:"center"}}>Enviamos un Mail a <b>{mail}</b> con toda la información necesaria</p>
                 </div>
                 :    
-                <CheckOut mercadoPago={generarLinkDePago} funcion={crearNuevaOrden} nombre={setNombre} mail={setMail} telefono={setTelefono} direccion={setDireccion} localidad={setLocalidad}/>
+                <CheckOut mercadoPago={generarLinkDePago} statusMercadoPago={statusMP} funcion={crearNuevaOrden} nombre={setNombre} mail={setMail} telefono={setTelefono} direccion={setDireccion} localidad={setLocalidad}/>
             }
         </div>
     )
