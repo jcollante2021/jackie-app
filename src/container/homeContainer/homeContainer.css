@@ -16,3 +16,15 @@
 .footer{
     width: 98vw;
 }
+
+*{
+    animation-name: fade;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1s; 
+}  
+@keyframes fade {
+    0% {
+        opacity: 0; }
+    100% {
+        opacity: 1; } }
