@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './itemDetailComponent.css'
 import Counter from '../counter/Counter'
 import { Button, Snackbar } from '@material-ui/core'
@@ -9,8 +9,10 @@ import { Link } from 'react-router-dom'
 
 export default function ItemDetailComponent({itemSelect}) {
     const {addItemToCart} = useContext(CartContext)
+    const {cart} = useContext(CartContext)
     const [terminarCompra, setTerminarCompra] = useState(false)
     const [open, setOpen] = useState(false)
+    const [stockInCart, setStockInCart] = useState(false)
     
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -25,6 +27,13 @@ export default function ItemDetailComponent({itemSelect}) {
         setOpen(true);
     }
 
+    useEffect(() => {
+            let buscaStockInCart = cart.find(element => element.producto === itemSelect)
+            if (buscaStockInCart){
+                setStockInCart(buscaStockInCart.cantidad)
+            }
+    }, [itemSelect, cart, terminarCompra]);
+
     return (
         <div className="detailComponent">
             <div className="imgDetail">
@@ -33,7 +42,7 @@ export default function ItemDetailComponent({itemSelect}) {
             <div className="detail">
                 <h1>{itemSelect.title}</h1>
                 <p>{itemSelect.description}</p>
-                <p>Stock: {itemSelect.stock}</p>
+                <p>Stock: {itemSelect.stock - stockInCart}</p>
                 <h3>${itemSelect.price}</h3>
                 { terminarCompra ? 
                 <div>
@@ -43,7 +52,7 @@ export default function ItemDetailComponent({itemSelect}) {
                     <Link to={`/productos`}><Button variant="contained" color="primary">VER MÁS PRODUCTOS</Button></Link>
                 </div>
                 :
-                <Counter stock={itemSelect.stock} onAdd={onAdd}/>
+                <Counter stock={itemSelect.stock - stockInCart} onAdd={onAdd}/>
 
                 }                
             </div>

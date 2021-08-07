@@ -21,6 +21,7 @@ export default function ItemCard({productos}) {
     const classes = useStyles();
     return (
         <div className="itemCard">
+            {productos.stock === 0 && <img className="soldOut" src="https://firebasestorage.googleapis.com/v0/b/jackie-app-74305.appspot.com/o/soldout.png?alt=media&token=efef7ca0-4abe-48b1-a37d-9a91fc2d53cb" alt="Vendido SoldOut" />}
             <Card className={classes.root}>
                 <CardMedia
                 className={classes.media}
@@ -33,9 +34,6 @@ export default function ItemCard({productos}) {
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {productos.description}
-                    </Typography>
-                    <Typography variant="body1" color="textPrimary" component="p">
-                        Stock: {productos.stock}
                     </Typography>
                     <Typography className="textPrice" variant="h5"> 
                         ${productos.price}
