@@ -3,6 +3,7 @@ import { useState } from 'react'
 import CheckOut from '../../components/checkOut/CheckOut';
 import { CartContext } from '../../context/CartContext';
 import { getFirestore } from '../../Firebase/client';
+import './checkOutContainer.css'
 
 export default function CheckOutContainer() {
     const {cart} = useContext(CartContext)
@@ -59,7 +60,7 @@ export default function CheckOutContainer() {
     return (
         <div>
             {idDePedido ? 
-                <div>
+                <div className="pedidoCompleto">
                     <h1 style={{marginBottom: 50, textAlign:"center"}}>¡¡¡Felicitaciones {nombre}!!! <br /> el pedido se realizo con Éxito <br /> <br />
                     Tu N° de Orden es: <br /> {idDePedido}</h1>
                     <p style={{marginBottom: 150, textAlign:"center"}}>Enviamos un Mail a <b>{mail}</b> con toda la información necesaria</p>
